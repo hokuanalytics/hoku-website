@@ -1,8 +1,8 @@
 "use client";
 
-import { useRef, useMemo } from "react";
+import { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, MeshDistortMaterial } from "@react-three/drei";
+import { Float, MeshDistortMaterial, Line } from "@react-three/drei";
 import * as THREE from "three";
 
 function Orb({
@@ -65,40 +65,27 @@ function ConnectionLines() {
     }
   });
 
-  const lines = useMemo(() => {
-    const connections = [];
-    for (let i = 0; i < 15; i++) {
-      const startX = (Math.random() - 0.5) * 10;
-      const startY = (Math.random() - 0.5) * 10;
-      const endX = (Math.random() - 0.5) * 10;
-      const endY = (Math.random() - 0.5) * 10;
-
-      connections.push({
-        start: new THREE.Vector3(startX, startY, -2),
-        end: new THREE.Vector3(endX, endY, -2),
-      });
-    }
-    return connections;
-  }, []);
+  // Pre-defined line positions
+  const linePoints: Array<[THREE.Vector3, THREE.Vector3]> = [
+    [new THREE.Vector3(-4, 3, -2), new THREE.Vector3(2, -2, -2)],
+    [new THREE.Vector3(3, 4, -2), new THREE.Vector3(-3, -1, -2)],
+    [new THREE.Vector3(-2, -3, -2), new THREE.Vector3(4, 2, -2)],
+    [new THREE.Vector3(0, 4, -2), new THREE.Vector3(0, -4, -2)],
+    [new THREE.Vector3(-4, 0, -2), new THREE.Vector3(4, 0, -2)],
+  ];
 
   return (
     <group ref={linesRef}>
-      {lines.map((line, index) => {
-        const geometry = new THREE.BufferGeometry().setFromPoints([
-          line.start,
-          line.end,
-        ]);
-        return (
-          <line key={index} geometry={geometry}>
-            <lineBasicMaterial
-              color="#35AAF9"
-              transparent
-              opacity={0.1}
-              linewidth={1}
-            />
-          </line>
-        );
-      })}
+      {linePoints.map((points, index) => (
+        <Line
+          key={index}
+          points={[points[0], points[1]]}
+          color="#35AAF9"
+          lineWidth={0.5}
+          transparent
+          opacity={0.1}
+        />
+      ))}
     </group>
   );
 }

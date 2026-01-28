@@ -2,7 +2,7 @@
 
 import { useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, MeshDistortMaterial, Sphere } from "@react-three/drei";
+import { Float, MeshDistortMaterial, Line } from "@react-three/drei";
 import * as THREE from "three";
 
 function HydrogenAtom({
@@ -60,15 +60,14 @@ function Bond({
     return [new THREE.Vector3(...start), new THREE.Vector3(...end)];
   }, [start, end]);
 
-  const lineGeometry = useMemo(() => {
-    const geometry = new THREE.BufferGeometry().setFromPoints(points);
-    return geometry;
-  }, [points]);
-
   return (
-    <line geometry={lineGeometry}>
-      <lineBasicMaterial color={color} linewidth={2} transparent opacity={0.5} />
-    </line>
+    <Line
+      points={points}
+      color={color}
+      lineWidth={2}
+      transparent
+      opacity={0.5}
+    />
   );
 }
 
