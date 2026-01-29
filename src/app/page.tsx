@@ -74,13 +74,48 @@ const versions = [
     gradient: "from-[#1a1a2e] via-[#16213e] to-[#0f0f23]",
     textColor: "text-white",
   },
+  {
+    id: "v11",
+    title: "Horizontal Scroll",
+    description: "Yatay kaydırma efekti, video arka plan",
+    gradient: "from-[#0a0a0a] to-[#04223F]",
+    textColor: "text-white",
+  },
+  {
+    id: "v12",
+    title: "Brutalist",
+    description: "Cesur tipografi, siyah-beyaz kontrast, keskin hatlar",
+    gradient: "from-white to-black",
+    textColor: "text-black",
+  },
+  {
+    id: "v13",
+    title: "Gradient Mesh",
+    description: "Mesh gradient arka plan, mor-mavi tonlar",
+    gradient: "from-purple-900 via-[#16213e] to-cyan-900",
+    textColor: "text-white",
+  },
+  {
+    id: "v14",
+    title: "Card Stack",
+    description: "Scroll ile üst üste binen kartlar, 3D efekt",
+    gradient: "from-[#04223F] to-[#35AAF9]",
+    textColor: "text-white",
+  },
+  {
+    id: "v15",
+    title: "Immersive Video",
+    description: "Tam ekran video deneyimi, ses kontrolü, shrink efekt",
+    gradient: "from-black to-[#04223F]",
+    textColor: "text-white",
+  },
 ];
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#04223F] via-[#183A6B] to-[#04223F]">
       {/* Hero */}
-      <div className="container mx-auto px-6 pt-24 pb-16">
+      <div className="container mx-auto px-6 pt-20 pb-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -90,50 +125,50 @@ export default function Home() {
           <span className="text-[#35AAF9] text-sm font-medium uppercase tracking-widest">
             Hoku Energy
           </span>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 mt-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 mt-4">
             Homepage Tasarım
             <span className="text-[#35AAF9]"> Versiyonları</span>
           </h1>
-          <p className="text-lg text-white/70 mb-8">
-            10 farklı homepage tasarımı. Beğendiğiniz versiyonu seçin.
+          <p className="text-lg text-white/70 mb-6">
+            15 farklı homepage tasarımı. Beğendiğiniz versiyonu seçin.
           </p>
         </motion.div>
 
         {/* Version Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 max-w-7xl mx-auto">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 max-w-7xl mx-auto">
           {versions.map((version, index) => (
             <motion.div
               key={version.id}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
+              transition={{ duration: 0.3, delay: index * 0.03 }}
             >
               <Link href={`/${version.id}`}>
-                <div className="group relative overflow-hidden rounded-2xl cursor-pointer transform transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl">
+                <div className="group relative overflow-hidden rounded-xl cursor-pointer transform transition-all duration-300 hover:scale-[1.05] hover:shadow-2xl">
                   {/* Preview Background */}
                   <div
-                    className={`h-48 bg-gradient-to-br ${version.gradient} flex items-center justify-center relative`}
+                    className={`h-32 bg-gradient-to-br ${version.gradient} flex items-center justify-center relative`}
                   >
                     <div className={`text-center ${version.textColor}`}>
-                      <div className="text-5xl font-bold opacity-30 group-hover:opacity-50 transition-opacity">
+                      <div className="text-3xl font-bold opacity-40 group-hover:opacity-60 transition-opacity">
                         {version.id.toUpperCase()}
                       </div>
                     </div>
                     
                     {/* Hover overlay */}
-                    <div className="absolute inset-0 bg-[#35AAF9]/0 group-hover:bg-[#35AAF9]/20 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-                      <span className="bg-white text-black px-4 py-2 rounded-full text-sm font-medium">
-                        Görüntüle →
+                    <div className="absolute inset-0 bg-[#35AAF9]/0 group-hover:bg-[#35AAF9]/30 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                      <span className="bg-white text-black px-3 py-1 rounded-full text-xs font-medium">
+                        Görüntüle
                       </span>
                     </div>
                   </div>
 
                   {/* Info */}
-                  <div className="bg-white/10 backdrop-blur-sm p-4">
-                    <h3 className="text-lg font-semibold text-white mb-1">
+                  <div className="bg-white/10 backdrop-blur-sm p-3">
+                    <h3 className="text-sm font-semibold text-white mb-0.5">
                       {version.title}
                     </h3>
-                    <p className="text-white/60 text-sm line-clamp-2">
+                    <p className="text-white/50 text-xs line-clamp-1">
                       {version.description}
                     </p>
                   </div>
@@ -147,8 +182,8 @@ export default function Home() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
-          className="text-center mt-12 space-y-4"
+          transition={{ delay: 0.5 }}
+          className="text-center mt-10 space-y-3"
         >
           <Link
             href="/original"
@@ -168,7 +203,7 @@ export default function Home() {
 
       {/* Footer info */}
       <div className="fixed bottom-4 left-4 text-white/30 text-xs">
-        10 Homepage Version + 1 Original Full Site
+        15 Homepage Versions + 1 Original Full Site
       </div>
     </div>
   );
