@@ -12,9 +12,24 @@ const HydrogenMolecule = dynamic(
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-cool-graphite via-navy to-cool-graphite">
-        {/* Animated background elements */}
+      {/* Video Background */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="w-full h-full object-cover"
+        >
+          <source src="/hero-video.mp4" type="video/mp4" />
+        </video>
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-cool-graphite/80 via-navy/70 to-cool-graphite/80" />
+      </div>
+
+      {/* Animated background elements */}
+      <div className="absolute inset-0 z-[1] pointer-events-none">
         <motion.div
           animate={{ 
             scale: [1, 1.2, 1],
@@ -31,18 +46,10 @@ export default function Hero() {
           transition={{ duration: 8, repeat: Infinity, delay: 1 }}
           className="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 rounded-full bg-navy/50 blur-3xl"
         />
-        {/* Pattern overlay */}
-        <div
-          className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
-            backgroundSize: "40px 40px",
-          }}
-        />
       </div>
       
       {/* 3D Background Element */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1/2 h-full opacity-25 pointer-events-none hidden lg:block">
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1/2 h-full opacity-25 pointer-events-none hidden lg:block z-[2]">
         <HydrogenMolecule />
       </div>
 
