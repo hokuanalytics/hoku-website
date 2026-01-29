@@ -22,7 +22,7 @@ export default function Hero() {
           preload="auto"
           className="w-full h-full object-cover"
         >
-          <source src="/hero-video.mp4" type="video/mp4" />
+          <source src="/movie-video.mp4" type="video/mp4" />
         </video>
         {/* Dark overlay for readability */}
         <div className="absolute inset-0 bg-gradient-to-br from-cool-graphite/80 via-navy/70 to-cool-graphite/80" />
